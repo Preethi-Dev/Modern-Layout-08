@@ -1,5 +1,152 @@
 /* Resets */
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
 /* Fonts */
+@font-face {
+  font-family: "PP Hatton Light";
+  src: url(./assets/fonts/PPHatton-Ultralight.otf);
+}
+
+@font-face {
+  font-family: "PP Hatton Medium";
+  src: url(./assets/fonts/PPHatton-Medium.otf);
+}
+
+@font-face {
+  font-family: "PP Hatton Bold";
+  src: url(./assets/fonts/PPHatton-Bold.otf);
+}
+
 /* Variables */
+:root {
+  --primary: #000000;
+  --bg: #f0f1f4;
+}
+
 /* Base Styles */
+body {
+  background-color: var(--bg);
+  color: var(--primary);
+}
+
+.logo h1 {
+  font-family: "PP Hatton Light";
+  font-style: normal;
+  font-weight: 100;
+  font-size: 1.125rem;
+  line-height: 120%;
+  letter-spacing: -0.02em;
+  text-transform: uppercase;
+}
+
+main h2 {
+  font-family: "PP Hatton Light";
+  font-style: normal;
+  font-weight: 100;
+  font-size: 4rem;
+  line-height: 100%;
+  text-align: center;
+  letter-spacing: -0.02em;
+  text-transform: uppercase;
+}
+
+.logo h1 > span,
+main h2 > span {
+  font-family: "PP Hatton Medium";
+  font-weight: 500;
+  display: block;
+}
+
+header {
+  display: flex;
+  justify-content: space-between;
+
+  padding: 1.875rem;
+}
+
+img {
+  max-width: 100%;
+}
+
 /* Mobile Styles */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-areas:
+    "image1 image1 . image2"
+    "texts texts texts texts"
+    ". image3 image3 .";
+  grid-row-gap: 1rem;
+  justify-items: center;
+}
+
+.image:nth-child(1) {
+  grid-area: image1;
+}
+
+.image:nth-last-child(2) {
+  grid-area: image2;
+}
+
+.image:nth-last-child(1) {
+  grid-area: image3;
+}
+
+h2 {
+  grid-area: texts;
+}
+
+/* Small Tablet Styles */
+@media screen and (min-width: 690px) {
+  main h2 {
+    font-size: 5rem;
+  }
+}
+
+/* Large Tablet and Laptop Styles */
+@media screen and (min-width: 900px) {
+  .grid {
+    grid-template-columns: repeat(8, 1fr);
+    grid-template-areas:
+      ". image1 image1 .      .       .      image2 ."
+      ". texts  texts  texts  texts   texts  image2 ."
+      ". .      image3 image3 image3  image3 .      .";
+  }
+  .image:nth-last-child(2) {
+    align-self: end;
+  }
+}
+
+/* Desktop Styles */
+@media screen and (min-width: 1200px) {
+  main {
+    max-width: 1600px;
+    margin: 0 auto;
+  }
+  .grid {
+    grid-template-columns: repeat(12, 1fr);
+    grid-template-areas:
+      ". image1 image1 .      .       .      .  .  .  .  . ."
+      ". texts  texts  texts  texts   texts  texts  texts  texts  texts  image2 ."
+      ". .      image3 image3 image3  image3 .  .  .  .  .      .";
+  }
+  main h2 {
+    font-size: 8rem;
+  }
+  .image:nth-last-child(2) {
+    align-self: center;
+  }
+  .image:nth-last-child(1) {
+    justify-self: end;
+  }
+
+  .image:nth-child(1) img {
+    margin-bottom: -4rem;
+  }
+}
